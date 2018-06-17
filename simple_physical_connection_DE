@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# DESCRIPTION: Example (DE): scenario with one PC connected to the physical host interface enp0s3
+
+LIGHTNING_INSTALLATION_PATH=$(dirname $(readlink -f $(which lightning)))
+source $LIGHTNING_INSTALLATION_PATH/functions
+source $LIGHTNING_INSTALLATION_PATH/personalized_functions
+
+# CREACIÓN Y CONFIGURACIÓN DE CONTAINERS
+create_container h1 hostPhysConn host
+connect_machine_physical h1 phys enp0s3
+clear_interface h1 phys
+
+
+# MOSTRAR VENTANAS DE COMANDOS
+display_host h1
